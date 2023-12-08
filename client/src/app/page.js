@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
 
-  const [message, setMessage] = useState("Loading")
+  const [message, setMessage] = useState("newest moose.net loading")
   const [moose, setMoose] = useState([]);
 
   useEffect(() => {

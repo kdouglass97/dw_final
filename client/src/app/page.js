@@ -10,7 +10,7 @@ export default function Home() {
   const [moose, setMoose] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/home").then(
+    fetch("https://dw-final-l4ac9104u-ks-projects-14d16bb8.vercel.app").then(
       response => response.json()
     ).then(
       data => { 

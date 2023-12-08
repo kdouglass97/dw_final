@@ -6,7 +6,7 @@ const PORT = 4000;
 
 app.use(cors());
 
-app.get("/api/home", (req,res) => {
+app.get("/", (req,res) => {
     res.json({message: "Hello world",moose:["mike","joe","xiao"]});
 });
 
@@ -14,3 +14,5 @@ app.get("/api/home", (req,res) => {
 app.listen(PORT, () => {
     console.log(`server started on port ${PORT}`);
 });
+
+export default app;

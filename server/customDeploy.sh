@@ -18,7 +18,8 @@ FILE=".env"
 if [ -f "$FILE" ]; then
     # If it exists, remove it
     #rm "$FILE"
-    echo "File $FILE found."
+    echo "File $FILE found. Previous contents (to be overwritten):"
+    cat $FILE
 fi 
 
 # Save the URL into a file

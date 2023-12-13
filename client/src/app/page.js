@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-import styles from './page.module.css'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
@@ -37,7 +35,7 @@ export default function Home() {
         setPosts(userData.postArray)
       }
     )
-  },[]);
+  },[userURL]);
 
   return (
     <div>

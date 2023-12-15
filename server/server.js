@@ -23,10 +23,12 @@ app.use(cors());
 const indexRoute = require('./routes/index');
 const getMooseRoute = require('./routes/getMoose');
 const createUserRoute = require('./routes/createUser');
+const createPostRoute = require('./routes/createPost');
   
 app.use("/", indexRoute);
 app.use("/getMoose", getMooseRoute);
 app.use("/createUser", createUserRoute);
+app.use("/createPost", createPostRoute);
 
 app.listen(port, () => {
     console.log(`Final project listening on port ${port}`);

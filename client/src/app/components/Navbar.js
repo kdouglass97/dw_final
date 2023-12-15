@@ -8,6 +8,7 @@ var userURL = process.env.NEXT_PUBLIC_PROD_URL + "/createUser";
 const Navbar = function () {
   const { user, googleSignIn, logOut } = UserAuth();
   const [loading, setLoading] = useState(true);
+  const [userIsNew, setUserIsNew] = useState(false);
 
   const handleSignIn = async () => {
     try {
@@ -20,6 +21,8 @@ const Navbar = function () {
   const handleSignUp = async () => {
     try {
       await googleSignIn();
+      setUserIsNew(true);
+
     } catch (error) {
       console.log(error);
     }
@@ -33,8 +36,9 @@ const Navbar = function () {
     checkAuthentication();
   }, [user]);
 
-  useEffect(() => {
-    if (user != null) {
+
+useEffect(() => {
+    if (userIsNew && user != null) {
       try {
         fetch(userURL + "?userId=" + user.uid + "&username=" + user.displayName, {
           method: 'POST', 
@@ -51,7 +55,8 @@ const Navbar = function () {
         };
       };
     }
-  }, [user]);
+  }, [userIsNew, user]);
+
 
   const handleSignOut = async () => {
     try {

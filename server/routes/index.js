@@ -26,5 +26,7 @@ const moosePostRoute = require('./getMoose');
 router.use("/getMoose", moosePostRoute);
 const createUserRoute = require('./createUser');
 router.use("/createUser", createUserRoute);
+const createPostRoute = require('./createPost');
+router.use("/createPost", createPostRoute);
 
 module.exports = router;

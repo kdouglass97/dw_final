@@ -28,5 +28,8 @@ const createUserRoute = require('./createUser');
 router.use("/createUser", createUserRoute);
 const createPostRoute = require('./createPost');
 router.use("/createPost", createPostRoute);
+const getUserRoute = require('./getUser');
+router.use("/getUser", getUserRoute);
+
 
 module.exports = router;

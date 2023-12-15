@@ -10,10 +10,11 @@ router.post("/", async (req, res) => {
     const queryParams = req.query;
     const userId = queryParams.userId;
     const username = queryParams.username;
-    const posts = [{title: "", content: ""}];
+    const posts = [];
 
     const createNewUser = firestore.setDoc(firestore.doc(db, "users", userId),{
         username: username,
+        uid: userId,
         postArray: posts   
     }, {merge: true});
 

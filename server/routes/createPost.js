@@ -26,9 +26,11 @@ router.post("/", async (req,res) => {
     const title = queryParams.newPostTitle;
     const content = queryParams.newPostContent;
     const uid = queryParams.userId;
+    const timeStamp = Date.now();
 
     //setting results of function to variable, so it allows setpost.then to be possible
-    const setPost = await addToArray("users", uid, "postArray", [{title: title, content: content}]);
+    const setPost = await addToArray("users", uid, "postArray", 
+    [{title: title, content: content, timeStamp: timeStamp}]);
 
     setPost
         .then(() => {

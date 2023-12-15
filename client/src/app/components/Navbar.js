@@ -83,7 +83,7 @@ useEffect(() => {
 
         {!user ? null : (
           <li>
-            <Link href="/profile">Profile</Link>
+            <Link href={`/profile?userId=${user.uid}`}>Profile</Link>
           </li>
         )}
       </ul>
@@ -105,6 +105,7 @@ useEffect(() => {
           </p>
         </div>
       )}
+      <br></br>
     </div>
   );
 };

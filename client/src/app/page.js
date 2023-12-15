@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { UserAuth } from "./context/AuthContext";
+import Link from 'next/link';
 
 export default function Home() {
   //gets user from google signin
@@ -19,7 +20,7 @@ export default function Home() {
   var mooseURL = process.env.NEXT_PUBLIC_PROD_URL + "/getMoose";
   var submitPostURL = process.env.NEXT_PUBLIC_PROD_URL + "/createPost"
 
-  useEffect(() => {
+  function fetchUsers() {
     const userDataRef = fetch(usersURL, {
       method: 'GET', 
       headers: {
@@ -34,7 +35,11 @@ export default function Home() {
             setUsers(userData)
           }
         );
-  },[usersURL]);
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, [usersURL]);
 
   useEffect(() => {
     const mooseDataRef = fetch(mooseURL, {
@@ -79,6 +84,7 @@ export default function Home() {
           console.log(postRes.json())
           setNewPostTitle("");
           setNewContent("");
+          fetchUsers();
         }
       );
     } catch{(error) => {
@@ -107,12 +113,15 @@ export default function Home() {
           {individual} the moose number {mooseIndex+1}
         </div>
       ))}
+      <br></br>
       {users.map((user, userIndex) => (
         <div key={userIndex}>
           {user.postArray.map((post, postIndex) => (
             <div key={postIndex}>
-              <p><b>{user.username}</b> says</p>
-              <p><b>{post.title}: </b></p>
+              <Link href={`/profile?userId=${user.uid}`}> 
+                <p><c>{user.username}</c></p>
+              </Link> 
+              <p><b>{post.title} </b></p>
               <p>{post.content}</p> 
               <br></br>  
           </div>

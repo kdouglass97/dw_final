@@ -24,6 +24,9 @@ fi
 
 # Save the URL into a file
 echo "NEXT_PUBLIC_PROD_URL=\"$PROD_URL\"" > .env
+# Re-build the client
+sudo npm run build
+
 cd ..
 
 # Call firebase deploy
